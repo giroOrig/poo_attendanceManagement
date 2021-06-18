@@ -7,16 +7,16 @@
 
 using namespace std;
 
-class AttendanceManagement: public Student, public Course{
+class AttendanceManagement: public Student, public Course {
 private:
-string student;
-string course;
-string datetime;
+string student, course, datetime;
 bool state;
 
 public:
 AttendanceManagement();
 ~AttendanceManagement();
+string getStudent();
+string getName();
 void takeAttendance(Student* stu, Course* cou, string dat, bool sta);
 };
 

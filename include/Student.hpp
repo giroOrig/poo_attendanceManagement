@@ -7,8 +7,7 @@ using namespace std;
 class Student{
 private:
     int identifier;
-    string name;
-    string surname;
+    string name, surname;
 
 public:
     Student(){};
