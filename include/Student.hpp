@@ -1,23 +1,15 @@
-#ifndef student_H
-#define student_H
-
+#ifndef Student_Hpp
+#define Student_Hpp
+#include "./Student.cpp"
 #include <iostream>
+
 using namespace std;
 
-class Student{
-private:
-    int identifier;
-    string name, surname;
-
-public:
-    Student(){};
-    ~Student();
-    void setIdentifier(int id);
-    void setName(string n);
-    void setSurname(string sn);
-    int getIdentifier();
-    string getName();
-    string getSurname();
-};
+        void setIdentifier(int identifier);
+        void setName(string name);
+        void setSurname(string surname);
+        int getIdentifier();
+        string getName();
+        string getSurname();
 
 #endif

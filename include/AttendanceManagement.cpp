@@ -1,21 +1,44 @@
-#include "AttendanceManagement.hpp"
-#include "Student.hpp"
-
+#include "./Student.hpp"
+#include "./Course.hpp"
+//#include "../include/AttendanceManagement.hpp"
 #include <iostream>
 #include <fstream>
-
+#include <cstring>
 using namespace std;
 
-void AttendanceManagement::takeAttendance(Student* stu, Course* cou, string dat, bool sta){
+class AttendanceManagement{
+public:
+        void takeAttendance(Student* student, Course* course, string fecha, bool state){
+            ofstream outputFile;
+            ifstream outputFileExists;
+            outputFileExists.open("attendance.csv");
 
-    getStudent();
+            if(!outputFileExists){
+                outputFile.open("attendance.csv",fstream::in | fstream::out | fstream::trunc);
+                outputFile <<  "Id de Estudiante;Nombre/s;Apellido/s;Id de Materia;Nombre de Materia;Marca temporal;Presente" ;
+                outputFile << "\n";
+                outputFile << student->getIdentifier();
+                outputFile << ";"+student->getName()+";";
+                outputFile << student->getSurname()+";";
+                outputFile << course->getIdentifier();
+                outputFile << ";"+course->getName()+";";
+                outputFile << fecha+";";
+                outputFile << state;
+                outputFile.close();
+            }else{
+                outputFile.open("attendance.csv",fstream::in | fstream::out | fstream::app);
+                outputFile << "\n";
+                outputFile << student->getIdentifier();
+                outputFile << ";"+student->getName()+";";
+                outputFile << student->getSurname()+";";
+                outputFile << course->getIdentifier();
+                outputFile << ";"+course->getName()+";";
+                outputFile << fecha+";";
+                outputFile << state;
+                outputFile.close();
+            }
 
-    ofstream outputFile;
 
-    outputFile.open("Attendance.csv");
+        }
 
-    outputFile << "Id de Estudiante" <<	"Nombre/s"<< "Apellido/s" 
-    << "Id de Materia"<<"Nombre de Materia"<<	"Marca temporal"<<"Presente"<<endl;
-    //outputFile << << endl;
-    
-}
+};
